@@ -1,0 +1,10 @@
+MODEL: "gemini-2.0-flash"  # Keep it configurable for future updates
+TEMPERATURE: 0.2
+MAX_TOKENS: 2000
+
+# File paths
+COMPANY_DATA_PATH: company_data.csv
+UPLOAD_FOLDER: uploads
+
+# Thresholds
+FILE_SIZE_LIMIT_MB: 5

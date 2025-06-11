@@ -1,0 +1,51 @@
+# FastAPI and related
+fastapi
+uvicorn
+python-multipart
+jinja2
+aiofiles
+torch
+# Google Generative AI SDK
+google-genai
+
+# PDF parsing
+PyPDF2
+
+# File and form handling
+werkzeug
+tf-keras
+# Environment variables
+python-dotenv
+PyYAML
+nltk
+# Data validation and schemas
+pydantic
+
+# Regex
+regex
+PyMuPDF
+# Audio input/output
+sounddevice
+scipy
+soundfile
+requests
+
+# Text-to-speech (Murf API wrapper)
+murf
+
+# HTTP requests
+requests
+
+# Deep learning facial analysis
+deepface
+
+# Computer vision
+opencv-python
+
+# MediaPipe for face and hand tracking
+mediapipe==0.10.9
+
+yt-dlp
+webvtt-py
+sentence-transformers
+faiss-cpu

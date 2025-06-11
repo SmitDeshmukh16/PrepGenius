@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Parser</title>
+</head>
+<body>
+    <h2>Resume Parser</h2>
+    <form action="/process" method="post" enctype="multipart/form-data">
+        <label for="company">Select Company:</label>
+        <select name="company" id="company">
+            {% for company in company_names %}
+                <option value="{{ company }}">{{ company }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="hsc">HSC Marks:</label>
+        <input type="number" name="hsc" required>
+
+        <label for="ssc">SSC Marks:</label>
+        <input type="number" name="ssc" required>
+
+        <label for="cgpa">CGPA:</label>
+        <input type="number" step="0.01" name="cgpa" required>
+
+        <label for="branch">Select Branch:</label>
+        <select name="branch" id="branch">
+            <option value="CE">CE</option>
+            <option value="IT">IT</option>
+            <option value="ENTC">ENTC</option>
+        </select>
+
+        <label for="cv">Upload CV (PDF):</label>
+        <input type="file" name="cv" accept=".pdf" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

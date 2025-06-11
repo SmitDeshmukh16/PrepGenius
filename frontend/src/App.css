@@ -1,0 +1,12 @@
+/* Your existing CSS content goes here - keeping all the styles from the original style.css */
+@import url('https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "montserrat";
+  color: #fff;
+}
+
+/* Rest of your CSS content... */

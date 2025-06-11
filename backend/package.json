@@ -1,0 +1,40 @@
+{
+  "name": "prepgenius-backend",
+  "version": "1.0.0",
+  "description": "Backend for PrepGenius application",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "setup": "bash setup.sh",
+    "start": "concurrently \"npm run activate_env\" \"npm run start-node\" \"npm run start-fastapi\"",
+    "activate_env": "cross-env VIRTUAL_ENV=src/features/env && cross-env PATH=src/features/env/Scripts:$PATH && echo 'Virtual environment activated'",
+    "start-fastapi": "cross-env PYTHONPATH=src/features uvicorn src.features.main:app --reload",
+    "check-python-env": "python -c \"import sys; print('Python Executable:', sys.executable); print('Python Version:', sys.version)\"",
+    "start-node": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "install": "cross-env VIRTUAL_ENV=src/features/env && cross-env PATH=src/features/env/Scripts:$PATH && pip install -r src/features/requirements.txt"
+  },
+  "dependencies": {
+    "axios": "^1.8.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "express-validator": "^7.0.1",
+    "form-data": "^4.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.11",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "passport-linkedin-oauth2": "^2.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.0"
+  }
+}

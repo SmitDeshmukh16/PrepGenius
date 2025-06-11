@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-black text-white font-sans antialiased;
+}
+
+::selection {
+  @apply bg-white bg-blue-500;
+}
+
+::-webkit-scrollbar {
+  @apply w-2 bg-blue-500;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white rounded-full;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll 40s linear infinite;
+}
+
+.hover-glow:hover {
+  text-shadow: 0 0 10px blue,
+               0 0 20px blue,
+               0 0 30px blue;
+}
+
+.glow {
+  text-shadow: 0 0 10px currentColor,
+               0 0 20px currentColor,
+               0 0 30px currentColor;
+}
+
+/* Add smooth transitions for all interactive elements */
+a, button, .interactive {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  @apply transition-transform duration-300;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.card-hover:hover {
+  @apply shadow-xl shadow-blue-500/20;
+  transform: translateY(-5px) scale(1.02);
+}

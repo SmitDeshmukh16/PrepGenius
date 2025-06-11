@@ -1,0 +1,258 @@
+{
+    "subjects": [
+      {
+        "name": "Operating Systems",
+        "topics": [
+          {
+            "name": "Introduction",
+            "subtopics": [
+              "What is an Operating System?",
+              "History of Operating Systems",
+              "Types of Operating Systems"
+            ]
+          },
+          {
+            "name": "Process Management",
+            "subtopics": [
+              "Processes and Threads",
+              "Process Scheduling",
+              "Operations on Processes",
+              "Inter-process Communication",
+              "Process Synchronization",
+              "Deadlocks"
+            ]
+          },
+          {
+            "name": "Memory Management",
+            "subtopics": [
+              "Memory Allocation",
+              "Paging",
+              "Segmentation",
+              "Virtual Memory",
+              "Page Replacement Algorithms"
+            ]
+          },
+          {
+            "name": "File Systems",
+            "subtopics": [
+              "File Concepts",
+              "Access Methods",
+              "Directory Structure",
+              "File System Mounting",
+              "File Sharing",
+              "Protection"
+            ]
+          },
+          {
+            "name": "I/O Systems",
+            "subtopics": [
+              "I/O Hardware",
+              "Application I/O Interface",
+              "Kernel I/O Subsystem",
+              "Transforming I/O Requests to Hardware Operations",
+              "Performance"
+            ]
+          },
+          {
+            "name": "Security and Protection",
+            "subtopics": [
+              "Security Threats",
+              "Protection Mechanisms",
+              "Encryption",
+              "User Authentication",
+              "Firewall"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Database Management Systems",
+        "topics": [
+          {
+            "name": "Introduction",
+            "subtopics": [
+              "Database System Applications",
+              "Purpose of Database Systems",
+              "View of Data",
+              "Database Languages",
+              "Database Users and Administrators"
+            ]
+          },
+          {
+            "name": "Database Design",
+            "subtopics": [
+              "ER Model",
+              "Relational Model",
+              "Relational Algebra",
+              "SQL",
+              "Normalization",
+              "Integrity Constraints"
+            ]
+          },
+          {
+            "name": "Storage and File Structure",
+            "subtopics": [
+              "File Organization",
+              "Indexing",
+              "Hashing",
+              "B-Trees",
+              "B+ Trees"
+            ]
+          },
+          {
+            "name": "Transaction Management",
+            "subtopics": [
+              "Transactions",
+              "ACID Properties",
+              "Concurrency Control",
+              "Lock-Based Protocols",
+              "Timestamp-Based Protocols",
+              "Deadlock Handling"
+            ]
+          },
+          {
+            "name": "Database System Architectures",
+            "subtopics": [
+              "Centralized Systems",
+              "Client-Server Systems",
+              "Parallel Systems",
+              "Distributed Systems",
+              "NoSQL Databases"
+            ]
+          },
+          {
+            "name": "Advanced Topics",
+            "subtopics": [
+              "Big Data",
+              "Data Warehousing",
+              "Data Mining",
+              "Information Retrieval",
+              "Database Security"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Computer Networks",
+        "topics": [
+          {
+            "name": "Introduction",
+            "subtopics": [
+              "Uses of Computer Networks",
+              "Network Hardware",
+              "Network Software",
+              "Reference Models",
+              "Example Networks"
+            ]
+          },
+          {
+            "name": "Physical Layer",
+            "subtopics": [
+              "Transmission Media",
+              "Wireless Transmission",
+              "Switching",
+              "ISDN and ATM"
+            ]
+          },
+          {
+            "name": "Data Link Layer",
+            "subtopics": [
+              "Data Link Control",
+              "Error Detection and Correction",
+              "Sliding Window Protocols",
+              "Media Access Control",
+              "Ethernet",
+              "Wireless LANs"
+            ]
+          },
+          {
+            "name": "Network Layer",
+            "subtopics": [
+              "Routing Algorithms",
+              "Congestion Control",
+              "Internetworking",
+              "The Network Layer in the Internet"
+            ]
+          },
+          {
+            "name": "Transport Layer",
+            "subtopics": [
+              "Transport Services",
+              "Elements of Transport Protocols",
+              "The Internet Transport Protocols: UDP and TCP"
+            ]
+          },
+          {
+            "name": "Application Layer",
+            "subtopics": [
+              "DNS",
+              "Email",
+              "World Wide Web",
+              "Multimedia",
+              "Network Security"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Object-Oriented Programming Systems",
+        "topics": [
+          {
+            "name": "Introduction",
+            "subtopics": [
+              "What is OOP?",
+              "History of OOP",
+              "Procedural vs. Object-Oriented Programming"
+            ]
+          },
+          {
+            "name": "Core Concepts",
+            "subtopics": [
+              "Classes and Objects",
+              "Encapsulation",
+              "Inheritance",
+              "Polymorphism",
+              "Abstraction"
+            ]
+          },
+          {
+            "name": "Advanced Concepts",
+            "subtopics": [
+              "Interfaces",
+              "Abstract Classes",
+              "Overloading and Overriding",
+              "Exception Handling",
+              "Generics"
+            ]
+          },
+          {
+            "name": "Design Principles",
+            "subtopics": [
+              "SOLID Principles",
+              "Design Patterns",
+              "MVC Architecture"
+            ]
+          },
+          {
+            "name": "Programming Languages",
+            "subtopics": [
+              "C++",
+              "Java",
+              "Python",
+              "C#"
+            ]
+          },
+          {
+            "name": "Best Practices",
+            "subtopics": [
+              "Code Reusability",
+              "Code Maintainability",
+              "Documentation",
+              "Testing"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

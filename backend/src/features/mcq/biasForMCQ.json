@@ -1,0 +1,65 @@
+{
+    "biases": [
+      {
+        "name": "Repetition Bias",
+        "description": "Frequently repeating similar questions or concepts, leading to overemphasis on certain topics while neglecting others."
+      },
+      {
+        "name": "Complexity Bias",
+        "description": "Generating questions that are either too easy or too difficult, without a balanced mix of difficulty levels."
+      },
+      {
+        "name": "Ambiguity Bias",
+        "description": "Using vague or unclear wording that makes it difficult for students to determine the correct answer."
+      },
+      {
+        "name": "Terminology Bias",
+        "description": "Overusing or underusing technical terms, making the questions too jargon-heavy or too simplified."
+      },
+      {
+        "name": "Stereotypical Scenarios",
+        "description": "Framing questions with biased or unrealistic assumptions, limiting diverse perspectives."
+      },
+      {
+        "name": "Neglecting Conceptual Understanding",
+        "description": "Focusing more on factual recall rather than testing deep understanding and application of concepts."
+      },
+      {
+        "name": "Cultural Bias",
+        "description": "Using region-specific examples or idioms that may not be universally understood."
+      },
+      {
+        "name": "Pattern Bias",
+        "description": "Creating answer choices that follow a predictable pattern, making it easier for test-takers to guess the answers without understanding the content."
+      },
+      {
+        "name": "Redundancy Bias",
+        "description": "Repeating similar concepts in different ways, leading to unnecessary repetition and reduced coverage of diverse topics."
+      },
+      {
+        "name": "Imbalance Bias",
+        "description": "Favoring certain topics while ignoring others, leading to an incomplete assessment of subject knowledge."
+      },
+      {
+        "name": "Gender Bias",
+        "description": "Using gendered language or examples that reinforce stereotypes."
+      },
+      {
+        "name": "Formulaic Bias",
+        "description": "Strictly adhering to a specific structure without variation, making it easy to predict answers."
+      },
+      {
+        "name": "Distractor Imbalance",
+        "description": "Providing answer choices where the incorrect options are either too obvious or completely unrealistic."
+      },
+      {
+        "name": "Misleading Questions",
+        "description": "Framing questions in a way that can mislead students into choosing incorrect answers due to tricky wording."
+      },
+      {
+        "name": "Overfitting to Training Data",
+        "description": "Generating questions that closely resemble training data instead of creating novel and diverse questions."
+      }
+    ]
+  }
+  

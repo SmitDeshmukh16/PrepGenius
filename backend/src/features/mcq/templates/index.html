@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Learning MCQ Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #loader {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        #mcqResults {
+            display: none;
+        }
+        .question-card {
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 5px solid #4CAF50;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .option-label {
+            display: block;
+            padding: 8px;
+            margin: 5px 0;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .option-label:hover {
+            background: #f0f0f0;
+        }
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e7f3fe;
+            border-left: 5px solid #2196F3;
+            display: none;
+        }
+        .correct-answer {
+            background-color: #dff0d8 !important;
+            border-color: #d6e9c6;
+        }
+        .incorrect-answer {
+            background-color: #f2dede !important;
+            border-color: #ebccd1;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .buttons button {
+            display: inline-block;
+            width: auto;
+            margin: 0 10px;
+            padding: 8px 16px;
+        }
+        #checkAllBtn {
+            background-color: #2196F3;
+        }
+        #resetBtn {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Adaptive Learning MCQ Generator</h1>
+        
+        <form id="mcqForm">
+            <label for="subject">Subject:</label>
+            <select id="subject" name="subject" required>
+                <option value="" selected disabled>Select Subject</option>
+                <option value="OS">Operating Systems</option>
+                <option value="CN">Computer Networks</option>
+                <option value="DBMS">Database Management Systems</option>
+                <option value="OOPS">Object-Oriented Programming</option>
+            </select>
+            
+            <label for="difficulty">Difficulty Level:</label>
+            <select id="difficulty" name="difficulty" required>
+                <option value="" selected disabled>Select Difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+            
+            <label for="topic">Topic (Optional):</label>
+            <select id="topic" name="topic">
+                <option value="NA" selected>All Topics</option>
+            </select>
+            
+            <button type="submit">Generate Questions</button>
+        </form>
+        
+        <div id="loader">
+            <p>Generating questions, please wait...</p>
+        </div>
+        
+        <div id="mcqResults">
+            <h2>MCQ Questions</h2>
+            <div id="questionsContainer"></div>
+            
+            <div class="buttons">
+                <button id="checkAllBtn">Check All Answers</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Topic dropdown population based on subject selection
+            const subjectSelect = document.getElementById('subject');
+            const topicSelect = document.getElementById('topic');
+            
+            // Define topics for each subject
+            const topicsMap = {
+                "OS": ["Process Management", "Memory Management", "File Systems", "Deadlocks", "Scheduling Algorithms"],
+                "CN": ["Network Layers", "Routing Algorithms", "TCP/IP", "Network Security", "Wireless Networks"],
+                "DBMS": ["Normalization", "SQL Queries", "Transaction Management", "Indexing", "ACID Properties"],
+                "OOPS": ["Inheritance", "Polymorphism", "Encapsulation", "Abstraction", "Design Patterns"]
+            };
+            
+            subjectSelect.addEventListener('change', function() {
+                const selectedSubject = this.value;
+                const topics = topicsMap[selectedSubject] || [];
+                
+                // Clear and rebuild topic dropdown
+                topicSelect.innerHTML = '<option value="NA" selected>All Topics</option>';
+                topics.forEach(topic => {
+                    const option = document.createElement('option');
+                    option.value = topic;
+                    option.textContent = topic;
+                    topicSelect.appendChild(option);
+                });
+            });
+            
+            // Form submission handler
+            document.getElementById('mcqForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loader
+                document.getElementById('loader').style.display = 'block';
+                document.getElementById('mcqResults').style.display = 'none';
+                
+                // Prepare form data
+                const formData = new FormData(this);
+                
+                // Send AJAX request
+                fetch('/generate_mcq', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Hide loader
+                    document.getElementById('loader').style.display = 'none';
+                    
+                    if (data.error) {
+                        alert('Error: ' + data.error);
+                        return;
+                    }
+                    
+                    // Render questions
+                    renderQuestions(data);
+                    
+                    // Show results section
+                    document.getElementById('mcqResults').style.display = 'block';
+                })
+                .catch(error => {
+                    document.getElementById('loader').style.display = 'none';
+                    alert('Error: ' + error.message);
+                });
+            });
+            
+            // Function to render questions
+            function renderQuestions(data) {
+                const container = document.getElementById('questionsContainer');
+                container.innerHTML = '';
+                
+                if (!data.question || !Array.isArray(data.question)) {
+                    container.innerHTML = '<p>No questions generated. Please try again.</p>';
+                    return;
+                }
+                
+                data.question.forEach((q, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'question-card';
+                    questionDiv.dataset.correctAnswer = q.correct_answer;
+                    
+                    // Question text
+                    const questionText = document.createElement('div');
+                    questionText.className = 'question-text';
+                    questionText.textContent = `${index + 1}. ${q.question_text}`;
+                    questionDiv.appendChild(questionText);
+                    
+                    // Topic and difficulty info
+                    const metadata = document.createElement('div');
+                    metadata.style.fontSize = '0.8em';
+                    metadata.style.marginBottom = '10px';
+                    metadata.textContent = `Topic: ${q.topic} | Difficulty: ${q.difficulty}`;
+                    questionDiv.appendChild(metadata);
+                    
+                    // Options
+                    q.options.forEach(option => {
+                        const label = document.createElement('label');
+                        label.className = 'option-label';
+                        
+                        const input = document.createElement('input');
+                        input.type = 'radio';
+                        input.name = `question-${q.id}`;
+                        input.value = option.key;
+                        input.className = 'option-input';
+                        
+                        label.appendChild(input);
+                        label.appendChild(document.createTextNode(` ${option.key}: ${option.text}`));
+                        questionDiv.appendChild(label);
+                    });
+                    
+                    // Explanation (hidden initially)
+                    const explanation = document.createElement('div');
+                    explanation.className = 'explanation';
+                    explanation.innerHTML = `<strong>Explanation:</strong> ${q.explanation}`;
+                    questionDiv.appendChild(explanation);
+                    
+                    container.appendChild(questionDiv);
+                });
+            }
+            
+            // Check All Answers button
+            document.getElementById('checkAllBtn').addEventListener('click', function() {
+                const questionCards = document.querySelectorAll('.question-card');
+                questionCards.forEach(card => {
+                    const correctAnswer = card.dataset.correctAnswer;
+                    const options = card.querySelectorAll('.option-input');
+                    
+                    options.forEach(option => {
+                        const label = option.closest('.option-label');
+                        if (option.value === correctAnswer) {
+                            label.classList.add('correct-answer');
+                        } else if (option.checked) {
+                            label.classList.add('incorrect-answer');
+                        }
+                    });
+                    
+                    // Show explanation
+                    card.querySelector('.explanation').style.display = 'block';
+                });
+            });
+            
+            // Reset button
+            document.getElementById('resetBtn').addEventListener('click', function() {
+                const questionCards = document.querySelectorAll('.question-card');
+                questionCards.forEach(card => {
+                    // Clear all selections
+                    const options = card.querySelectorAll('.option-input');
+                    options.forEach(input => {
+                        input.checked = false;
+                    });
+                    
+                    // Remove highlight classes
+                    const labels = card.querySelectorAll('.option-label');
+                    labels.forEach(label => {
+                        label.classList.remove('correct-answer', 'incorrect-answer');
+                    });
+                    
+                    // Hide explanation
+                    card.querySelector('.explanation').style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
