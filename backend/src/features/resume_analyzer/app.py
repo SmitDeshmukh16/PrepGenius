@@ -49,7 +49,7 @@ except LookupError:
 #     if not api_key:
 #         raise ValueError("Missing Gemini API key. Please set the GEMINI_API_KEY environment variable.")
 #     return genai.Client(api_key=api_key)
-gemini_client = genai.Client(api_key="AIzaSyC92l4GjeNVs8yZlv2VyDWB5ZikggNxJCY")
+gemini_client = genai.Client(api_key=os.getenv('Test_API_KEY'))  # Use the environment variable for the API key
 # FastAPI App Setup
 app = FastAPI(title="Resume Analyzer",
               description="API for analyzing resumes and checking company eligibility")
