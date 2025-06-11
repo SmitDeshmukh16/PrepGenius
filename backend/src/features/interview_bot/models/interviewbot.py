@@ -194,6 +194,7 @@ class InterviewBot:
                 response = self.chat_session.send_message(transcript)
                 self.current_question = response.parsed
                 pprint(response.text.strip())
+            os.remove(audio_file)
                 
             file = text_to_speech(self.current_question.question)
             self.qno += 1
